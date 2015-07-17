@@ -132,7 +132,7 @@ public class PlayerEvent implements Listener {
                     for (Arena arena : OITQ.getInstance().getArenaManager().getLoadedArenas()) {
                         int space = OITQ.getInstance().getArenaManager().getLoadedArenas().indexOf(arena);
                         if (!arena.isStarted()) {
-                            inv.setItem(space, new ItemBuilder(Material.STAINED_CLAY).durability(DyeColor.WHITE.getData()).name("&a" + arena.getName()).lore(" ")
+                            inv.setItem(space, new ItemBuilder(Material.STAINED_CLAY).durability(DyeColor.WHITE.getData()).name("&a&nArena #" + space).lore(" ")
                                     .lore("&b&l- - - - - - - -")
                                     .lore(" ")
                                     .lore(" ")
@@ -144,7 +144,8 @@ public class PlayerEvent implements Listener {
                                     .lore("&b&l- - - - - - - -")
                                     .build());
                         } else {
-                            inv.setItem(inv.getSize() - space, new ItemBuilder(Material.STAINED_CLAY).durability(DyeColor.RED.getData()).name("&c" + arena.getName()).lore(" ")
+                            int slot = inv.getSize() - space;
+                            inv.setItem(slot, new ItemBuilder(Material.STAINED_CLAY).durability(DyeColor.RED.getData()).name("&c&nArena #" + slot).lore(" ")
                                     .lore("&b&l- - - - - - - -")
                                     .lore(" ")
                                     .lore(" ")
