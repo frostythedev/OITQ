@@ -1,0 +1,21 @@
+name: OITQ
+main: me.frostythedev.oitq.OITQ
+version: 1.0.0
+description: OITQ plugin for clients
+commands:
+    createarena:
+        description: Creates an OITQ arena.
+    removearena:
+        description: Removes an OITQ arena.
+    savearena:
+        description: Save an OITQ arena.
+    setlobby:
+        description: Sets the Lobby an OITQ arena.
+    addspawn:
+        description: Creates an OITQ arena.
+    join:
+        description: Joins an OITQ arena.
+    leave:
+        description: Leaves an OITQ arena.
+    stats:
+        description: Displays OITQ Stats.
