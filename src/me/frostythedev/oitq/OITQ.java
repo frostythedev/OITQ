@@ -6,6 +6,7 @@ import me.frostythedev.oitq.configuration.Configuration;
 import me.frostythedev.oitq.events.PlayerEvent;
 import me.frostythedev.oitq.events.UtilEvent;
 import me.frostythedev.oitq.game.GameManager;
+import me.frostythedev.oitq.managers.StatsManager;
 import me.frostythedev.oitq.sql.SQLite;
 import me.frostythedev.oitq.utils.Utils;
 import net.md_5.bungee.api.ChatColor;
@@ -27,6 +28,7 @@ public class OITQ extends JavaPlugin {
 
     private ArenaManager arenaManager;
     private GameManager gameManager;
+    private StatsManager statsManager;
     private Random random;
 
     @Override
@@ -45,6 +47,7 @@ public class OITQ extends JavaPlugin {
 
         arenaManager = new ArenaManager(this);
         gameManager = new GameManager(this);
+        statsManager = new StatsManager(this);
 
         getServer().getPluginManager().registerEvents(new PlayerEvent(), this);
         getServer().getPluginManager().registerEvents(new UtilEvent(), this);
@@ -71,6 +74,10 @@ public class OITQ extends JavaPlugin {
 
     public GameManager getGameManager() {
         return gameManager;
+    }
+
+    public StatsManager getStatsManager() {
+        return statsManager;
     }
 
     public Random getRandom() {

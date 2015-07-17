@@ -1,6 +1,7 @@
 name: OITQ
 main: me.frostythedev.oitq.OITQ
-version: 1.0.0
+version: 1.1.1
+author: frostythedev
 description: OITQ plugin for clients
 commands:
     createarena:
