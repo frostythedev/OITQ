@@ -47,10 +47,10 @@ public class Utils {
             ResultSet rs = SQLite.query("SELECT kills,deaths FROM `stats` WHERE uuid = '" + player.getUniqueId().toString() + "'");
             try {
                 if (rs != null) {
-                    spawnPPH(getStatsLocation().add(0, 3, 0), player, "&7&l- - - - - &a&lStats &7&l- - - - -");
-                    spawnPPH(getStatsLocation().add(0, 3.1, 0), player, "&7&lName: &a" + player.getName());
-                    spawnPPH(getStatsLocation().add(0, 3.2, 0), player, "&7&lKills: &a" + rs.getInt("kills"));
-                    spawnPPH(getStatsLocation().add(0, 3.3, 0), player, "&7&lDeaths: &a" + rs.getInt("deaths"));
+                    spawnPPH(getStatsLocation().add(0, -3, 0), player, "&7&l- - - - - &a&lStats &7&l- - - - -");
+                    spawnPPH(getStatsLocation().add(0, -3.31, 0), player, "&7&lName: &a" + player.getName());
+                    spawnPPH(getStatsLocation().add(0, -3.62, 0), player, "&7&lKills: &a" + rs.getInt("kills"));
+                    spawnPPH(getStatsLocation().add(0, -3.93, 0), player, "&7&lDeaths: &a" + rs.getInt("deaths"));
                 }
             } catch (SQLException e) {
                 e.printStackTrace();

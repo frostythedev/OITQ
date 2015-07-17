@@ -65,16 +65,10 @@ public class UtilEvent implements Listener {
 
     @EventHandler
     public void on(EntityDamageByEntityEvent e) {
-        if (e.getEntity() instanceof Player) {
-            Player player = (Player) e.getEntity();
-            if (e.getEntity() instanceof Arrow) {
-                Arrow arrow = (Arrow) e.getEntity();
-                if (arrow.getShooter() instanceof Player) {
-                    Player p = (Player) arrow.getShooter();
-                    if (OITQ.getInstance().getArenaManager().getArenaFromPlayer(p) != null) {
-                        e.setDamage(50);
-                    }
-                }
+        if (e.getEntity() instanceof Arrow) {
+            Arrow a = (Arrow) e.getEntity();
+            if (a.getShooter() instanceof Player) {
+                e.setDamage(100);
             }
         }
     }

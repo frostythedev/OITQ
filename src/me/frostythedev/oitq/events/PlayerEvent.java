@@ -6,10 +6,12 @@ import me.frostythedev.oitq.sql.SQLite;
 import me.frostythedev.oitq.utils.ItemBuilder;
 import me.frostythedev.oitq.utils.Lang;
 import me.frostythedev.oitq.utils.Utils;
+import net.minecraft.server.v1_8_R2.PacketPlayInClientCommand;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.DyeColor;
 import org.bukkit.Material;
+import org.bukkit.craftbukkit.v1_8_R2.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -73,7 +75,10 @@ public class PlayerEvent implements Listener {
 
     @EventHandler
     public void onDeath(PlayerDeathEvent e) {
-        //TODO Force Respawn
+        ((CraftPlayer) e.getEntity()).getHandle().playerConnection.a(new PacketPlayInClientCommand(PacketPlayInClientCommand.EnumClientCommand.PERFORM_RESPAWN));
+        if (e.getEntity().getKiller() != null) {
+            e.getEntity().getKiller().getInventory().addItem(new ItemStack(Material.ARROW));
+        }
     }
 
     @EventHandler
@@ -82,6 +87,9 @@ public class PlayerEvent implements Listener {
         if (OITQ.getInstance().getArenaManager().getArenaFromPlayer(p) != null) {
             Arena arena = OITQ.getInstance().getArenaManager().getArenaFromPlayer(p);
             if (arena.isStarted()) {
+                p.getInventory().setItem(0, new ItemBuilder(Material.BOW).name("&a&lKatniss").build());
+                p.getInventory().setItem(1, new ItemBuilder(Material.IRON_AXE).name("&a&lWeapon").build());
+                p.getInventory().setItem(8, new ItemBuilder(Material.ARROW).build());
                 p.teleport(arena.getSpawns().get(OITQ.getInstance().getRandom().nextInt(arena.getSpawns().size())));
             }
         }
@@ -109,6 +117,12 @@ public class PlayerEvent implements Listener {
 
     @EventHandler
     public void onInteract(PlayerInteractEvent e) {
+        if (e.getPlayer().getItemInHand() == null) {
+            return;
+        }
+        if (!e.getPlayer().getItemInHand().hasItemMeta()) {
+            return;
+        }
         String name = ChatColor.stripColor(e.getPlayer().getItemInHand().getItemMeta().getDisplayName());
         switch (e.getPlayer().getItemInHand().getType()) {
             case ARROW:

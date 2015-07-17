@@ -119,10 +119,9 @@ public class Arena {
                 OITQ.getInstance().getArenaManager().playerArena.put(p.getUniqueId(), this);
                 Lang.sendMessage(p, "&a&lYou have joined " + name + "!");
             }
-            if (getSize() == 8) {
+            if (getSize() < 8) {
                 new BukkitRunnable() {
                     int countdown = 60;
-
                     @Override
                     public void run() {
                         if (countdown > 0) {
@@ -132,9 +131,9 @@ public class Arena {
                                 Lang.broadcastArena(Arena.this, "&b&lThe game will begin in " + countdown + " seconds!");
                             }
                         } else {
-                            Arena.this.started = true;
                             this.cancel();
                             startGame();
+                            setStarted(true);
                         }
                         countdown--;
                     }

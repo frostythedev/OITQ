@@ -11,7 +11,8 @@ import org.bukkit.Bukkit;
 public class GameRunnable implements Runnable {
 
     private Arena arena;
-    private int ticks = 6000;
+
+    private int ticks = 450;
     private int task = OITQ.getInstance().getRandom().nextInt(123456789);
     private int time = 0;
 
@@ -22,7 +23,6 @@ public class GameRunnable implements Runnable {
     }
 
     @Override
-
     public void run() {
         if (time > 0) {
             if (time % 1000 == 0) {

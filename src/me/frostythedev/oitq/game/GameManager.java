@@ -32,9 +32,8 @@ public class GameManager {
             p.getInventory().setItem(1, new ItemBuilder(Material.IRON_AXE).name("&a&lWeapon").build());
             p.getInventory().setItem(8, new ItemBuilder(Material.ARROW).build());
         }
-        a.setStarted(true);
         Lang.broadcastArena(a, "&6&l- - - - - - - - - - - - - - -");
-        Lang.broadcastArena(a, "&7&oTHE GAME HAS BEGAN");
+        Lang.broadcastArena(a, "&7THE GAME HAS BEGAN");
         Lang.broadcastArena(a, "&e&lMatch Time: &f5mins");
         Lang.broadcastArena(a, "&e&oPlayers: &f" + a.getSize());
         Lang.broadcastArena(a, "&a&lGood Luck!");
