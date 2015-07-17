@@ -12,7 +12,7 @@ public class GameRunnable implements Runnable {
 
     private Arena arena;
 
-    private int ticks = 450;
+    private int ticks = 6000;
     private int task = OITQ.getInstance().getRandom().nextInt(123456789);
     private int time = 0;
 
