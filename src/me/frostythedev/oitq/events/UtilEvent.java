@@ -49,7 +49,7 @@ public class UtilEvent implements Listener {
                     Sign sign = (Sign) b.getState();
                     sign.setLine(0, "§a[OITQ]");
                     sign.setLine(1, "§n" + arena.getName());
-                    sign.setLine(2, "§b" + arena.getSize() + "/4");
+                    sign.setLine(2, "§b" + arena.getSize() + "/" + arena.getMax());
                     if (!arena.isStarted()) {
                         sign.setLine(3, "§2§lLOBBY");
                     } else {
