@@ -78,9 +78,12 @@ public class PlayerEvent implements Listener {
     public void onDeath(PlayerDeathEvent e) {
         ((CraftPlayer) e.getEntity()).getHandle().playerConnection.a(new PacketPlayInClientCommand(PacketPlayInClientCommand.EnumClientCommand.PERFORM_RESPAWN));
         StatsAPI.addDeaths(e.getEntity(), 1);
-        if (e.getEntity().getKiller() != null) {
-            StatsAPI.addKills(e.getEntity().getKiller(), 1);
-            e.getEntity().getKiller().getInventory().addItem(new ItemStack(Material.ARROW));
+
+        if (OITQ.getInstance().getArenaManager().isInArena(e.getEntity())) {
+            if (e.getEntity().getKiller() != null) {
+                StatsAPI.addKills(e.getEntity().getKiller(), 1);
+                e.getEntity().getKiller().getInventory().addItem(new ItemStack(Material.ARROW));
+            }
         }
     }
 
