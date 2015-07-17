@@ -19,7 +19,7 @@ public class StatsManager {
     }
 
     public void addKills(Player p, int amount) {
-        ResultSet rs = SQLite.query("SELECT kills FROM `stats` WHERE uuid = " + p.getUniqueId().toString() + "'");
+        ResultSet rs = SQLite.query("SELECT kills FROM `stats` WHERE uuid = '" + p.getUniqueId().toString() + "'");
         try {
             if (rs != null) {
                 amount = rs.getInt("kills") + amount;
@@ -31,7 +31,7 @@ public class StatsManager {
     }
 
     public void addDeaths(Player p, int amount) {
-        ResultSet rs = SQLite.query("SELECT deaths FROM `stats` WHERE uuid = " + p.getUniqueId().toString() + "'");
+        ResultSet rs = SQLite.query("SELECT deaths FROM `stats` WHERE uuid = '" + p.getUniqueId().toString() + "'");
         try {
             if (rs != null) {
                 amount = rs.getInt("deaths") + amount;
@@ -43,7 +43,7 @@ public class StatsManager {
     }
 
     public int getKills(Player p) {
-        ResultSet rs = SQLite.query("SELECT kills FROM `stats` WHERE uuid = " + p.getUniqueId().toString() + "'");
+        ResultSet rs = SQLite.query("SELECT kills FROM `stats` WHERE uuid = '" + p.getUniqueId().toString() + "'");
         try {
             if (rs != null) {
                 return rs.getInt("kills");
@@ -55,7 +55,7 @@ public class StatsManager {
     }
 
     public int getDeaths(Player p) {
-        ResultSet rs = SQLite.query("SELECT deaths FROM `stats` WHERE uuid = " + p.getUniqueId().toString() + "'");
+        ResultSet rs = SQLite.query("SELECT deaths FROM `stats` WHERE uuid = '" + p.getUniqueId().toString() + "'");
         try {
             if (rs != null) {
                 return rs.getInt("deaths");
