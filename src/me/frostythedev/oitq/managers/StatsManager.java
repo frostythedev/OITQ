@@ -65,4 +65,9 @@ public class StatsManager {
         }
         return 0;
     }
+
+    public void resetStats(Player p) {
+        SQLite.updateTable("stats", "kills", 0, "uuid", p.getUniqueId().toString());
+        SQLite.updateTable("stats", "deaths", 0, "uuid", p.getUniqueId().toString());
+    }
 }

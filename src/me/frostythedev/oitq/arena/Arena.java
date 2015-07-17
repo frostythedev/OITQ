@@ -112,6 +112,14 @@ public class Arena {
         return getPlayers().size();
     }
 
+    public int getMax() {
+        return max;
+    }
+
+    public void setMax(int max) {
+        this.max = max;
+    }
+
     public void addPlayer(Player p) {
         if (!started) {
             if (!OITQ.getInstance().getArenaManager().isInArena(p)) {
