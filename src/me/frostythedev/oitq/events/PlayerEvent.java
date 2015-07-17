@@ -1,6 +1,7 @@
 package me.frostythedev.oitq.events;
 
 import me.frostythedev.oitq.OITQ;
+import me.frostythedev.oitq.api.StatsAPI;
 import me.frostythedev.oitq.arena.Arena;
 import me.frostythedev.oitq.sql.SQLite;
 import me.frostythedev.oitq.utils.ItemBuilder;
@@ -76,7 +77,9 @@ public class PlayerEvent implements Listener {
     @EventHandler
     public void onDeath(PlayerDeathEvent e) {
         ((CraftPlayer) e.getEntity()).getHandle().playerConnection.a(new PacketPlayInClientCommand(PacketPlayInClientCommand.EnumClientCommand.PERFORM_RESPAWN));
+        StatsAPI.addDeaths(e.getEntity(), 1);
         if (e.getEntity().getKiller() != null) {
+            StatsAPI.addKills(e.getEntity().getKiller(), 1);
             e.getEntity().getKiller().getInventory().addItem(new ItemStack(Material.ARROW));
         }
     }

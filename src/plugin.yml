@@ -6,14 +6,19 @@ description: OITQ plugin for clients
 commands:
     createarena:
         description: Creates an OITQ arena.
+        permission: oitq.admin
     removearena:
         description: Removes an OITQ arena.
+        permission: oitq.admin
     savearena:
         description: Save an OITQ arena.
+        permission: oitq.admin
     setlobby:
         description: Sets the Lobby an OITQ arena.
+        permission: oitq.admin
     addspawn:
         description: Creates an OITQ arena.
+        permission: oitq.admin
     join:
         description: Joins an OITQ arena.
     leave:
